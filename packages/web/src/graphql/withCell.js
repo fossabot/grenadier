@@ -1,5 +1,5 @@
-import React from 'react'
-import { Query } from '@apollo/react-components'
+import React from "react";
+import { Query } from "@apollo/react-components";
 
 /**
  * Is a higher-order-component that executes a GraphQL query and automatically
@@ -21,7 +21,7 @@ import { Query } from '@apollo/react-components'
  * // `src/ExampleComponent/index.js`. This file is automatically dealt with
  * in webpack.
  *
- * import { withCell } from '@redwoodjs/web'
+ * import { withCell } from '@grenadierjs/web'
  * import * as cell from './ExampleComponent'
  *
  * export default withCell(cell)
@@ -37,51 +37,59 @@ import { Query } from '@apollo/react-components'
  * }
  */
 export const withCell = ({
-  beforeQuery = (props) => ({ variables: props }),
-  QUERY,
-  afterQuery = (data) => ({ ...data }),
-  Loading = () => 'Loading...',
-  Failure,
-  Empty,
-  Success,
+	beforeQuery = (props) => ({ variables: props }),
+	QUERY,
+	afterQuery = (data) => ({ ...data }),
+	Loading = () => "Loading...",
+	Failure,
+	Empty,
+	Success,
 }) => {
-  const isDataNull = (data) => {
-    return dataField(data) === null
-  }
+	const isDataNull = (data) => {
+		return dataField(data) === null;
+	};
 
-  const isDataEmptyArray = (data) => {
-    return Array.isArray(dataField(data)) && dataField(data).length === 0
-  }
+	const isDataEmptyArray = (data) => {
+		return Array.isArray(dataField(data)) && dataField(data).length === 0;
+	};
 
-  const dataField = (data) => {
-    return data[Object.keys(data)[0]]
-  }
+	const dataField = (data) => {
+		return data[Object.keys(data)[0]];
+	};
 
-  const isEmpty = (data) => {
-    return isDataNull(data) || isDataEmptyArray(data)
-  }
+	const isEmpty = (data) => {
+		return isDataNull(data) || isDataEmptyArray(data);
+	};
 
-  return (props) => (
-    <Query query={QUERY} {...beforeQuery(props)}>
-      {({ error, loading, data, ...queryRest }) => {
-        if (error) {
-          if (Failure) {
-            return <Failure error={error} {...queryRest} {...props} />
-          } else {
-            console.error(error)
-          }
-        } else if (loading) {
-          return <Loading {...queryRest} {...props} />
-        } else if (data) {
-          if (typeof Empty !== 'undefined' && isEmpty(data)) {
-            return <Empty {...queryRest} {...props} />
-          } else {
-            return <Success {...afterQuery(data)} {...queryRest} {...props} />
-          }
-        } else {
-          throw 'Cannot render cell: graphQL success but `data` is null'
-        }
-      }}
-    </Query>
-  )
-}
+	return (props) => (
+		<Query query={QUERY} {...beforeQuery(props)}>
+			{({ error, loading, data, ...queryRest }) => {
+				if (error) {
+					if (Failure) {
+						return (
+							<Failure error={error} {...queryRest} {...props} />
+						);
+					} else {
+						console.error(error);
+					}
+				} else if (loading) {
+					return <Loading {...queryRest} {...props} />;
+				} else if (data) {
+					if (typeof Empty !== "undefined" && isEmpty(data)) {
+						return <Empty {...queryRest} {...props} />;
+					} else {
+						return (
+							<Success
+								{...afterQuery(data)}
+								{...queryRest}
+								{...props}
+							/>
+						);
+					}
+				} else {
+					throw "Cannot render cell: graphQL success but `data` is null";
+				}
+			}}
+		</Query>
+	);
+};

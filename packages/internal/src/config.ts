@@ -1,19 +1,19 @@
-import fs from 'fs'
+import fs from "fs";
 
-import toml from 'toml'
+import toml from "toml";
 
-import { Config } from './types'
-import { getConfigPath } from './paths'
+import { Config } from "./types";
+import { getConfigPath } from "./paths";
 
 /**
- * These configuration options are modified by the user via the Redwood
+ * These configuration options are modified by the user via the Grenadier
  * config file.
  */
 export const getConfig = (): Config => {
-  const configPath = getConfigPath()
-  try {
-    return toml.parse(fs.readFileSync(configPath, 'utf8')) as Config
-  } catch (e) {
-    throw new Error(`Could not parse "${configPath}": ${e}`)
-  }
-}
+	const configPath = getConfigPath();
+	try {
+		return toml.parse(fs.readFileSync(configPath, "utf8")) as Config;
+	} catch (e) {
+		throw new Error(`Could not parse "${configPath}": ${e}`);
+	}
+};

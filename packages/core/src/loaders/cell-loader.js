@@ -1,24 +1,24 @@
 export default function (source) {
-  const exports = []
+	const exports = [];
 
-  const names = [
-    'QUERY',
-    'Loading',
-    'Success',
-    'Failure',
-    'Empty',
-    'beforeQuery',
-    'afterQuery',
-  ]
+	const names = [
+		"QUERY",
+		"Loading",
+		"Success",
+		"Failure",
+		"Empty",
+		"beforeQuery",
+		"afterQuery",
+	];
 
-  names.forEach((name) => {
-    source.match(`export const ${name}`) && exports.push(name)
-  })
+	names.forEach((name) => {
+		source.match(`export const ${name}`) && exports.push(name);
+	});
 
-  const newSource = `import { withCell } from '@redwoodjs/web'
+	const newSource = `import { withCell } from '@grenadierjs/web'
 ${source}
-export default withCell({ ${exports.join(', ')} })`
+export default withCell({ ${exports.join(", ")} })`;
 
-  // Give 'em what they want!
-  return newSource
+	// Give 'em what they want!
+	return newSource;
 }

@@ -1,12 +1,12 @@
-import PostsLayout from 'src/layouts/PostsLayout'
-import NewPost from 'src/components/NewPost'
+import PostsLayout from "src/layouts/PostsLayout";
+import NewPost from "src/components/NewPost";
 
 const NewPostPage = () => {
-  return (
-    <PostsLayout>
-      <NewPost />
-    </PostsLayout>
-  )
-}
+	return (
+		<PostsLayout>
+			<NewPost />
+		</PostsLayout>
+	);
+};
 
-export default NewPostPage
+export default NewPostPage;

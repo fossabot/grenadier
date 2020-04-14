@@ -1,7 +1,7 @@
-import { users } from './users'
+import { users } from "./users";
 
-describe('users', () => {
-  it('returns true', () => {
-    expect(true).toBe(true)
-  })
-})
+describe("users", () => {
+	it("returns true", () => {
+		expect(true).toBe(true);
+	});
+});

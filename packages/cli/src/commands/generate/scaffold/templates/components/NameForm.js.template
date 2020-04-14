@@ -5,7 +5,7 @@ import {
   Label,
   TextField,
   Submit,
-} from '@redwoodjs/web'
+} from '@grenadierjs/web'
 
 const CSS = {
   label: 'block mt-6 text-gray-700 font-semibold',

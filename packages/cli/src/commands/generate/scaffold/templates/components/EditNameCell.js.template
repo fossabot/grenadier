@@ -1,5 +1,5 @@
-import { useMutation } from '@redwoodjs/web'
-import { navigate, routes } from '@redwoodjs/router'
+import { useMutation } from '@grenadierjs/web'
+import { navigate, routes } from '@grenadierjs/router'
 import ${singularPascalName}Form from 'src/components/${singularPascalName}Form'
 
 export const QUERY = gql`

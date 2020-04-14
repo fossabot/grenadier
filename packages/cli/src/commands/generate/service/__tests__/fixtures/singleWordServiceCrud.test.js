@@ -1,7 +1,7 @@
-import { posts } from './posts'
+import { posts } from "./posts";
 
-describe('posts', () => {
-  it('returns true', () => {
-    expect(true).toBe(true)
-  })
-})
+describe("posts", () => {
+	it("returns true", () => {
+		expect(true).toBe(true);
+	});
+});

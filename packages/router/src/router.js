@@ -1,26 +1,26 @@
 // The guts of the router implementation.
 
 import {
-  Location,
-  parseSearch,
-  replaceParams,
-  matchPath,
-  ParamsContext,
-  navigate,
-  mapNamedRoutes,
-  SplashPage,
-  PageLoader,
-} from './internal'
+	Location,
+	parseSearch,
+	replaceParams,
+	matchPath,
+	ParamsContext,
+	navigate,
+	mapNamedRoutes,
+	SplashPage,
+	PageLoader,
+} from "./internal";
 
 const Route = () => {
-  return null
-}
+	return null;
+};
 
 const Router = (props) => (
-  <Location>
-    {(locationContext) => <RouterImpl {...locationContext} {...props} />}
-  </Location>
-)
+	<Location>
+		{(locationContext) => <RouterImpl {...locationContext} {...props} />}
+	</Location>
+);
 
 /**
  * Pages can be imported automatically or manually. Automatic imports are actually
@@ -38,80 +38,84 @@ const Router = (props) => (
  * Before passing a "page" to the PageLoader, we will normalize the manually
  * imported version into a spec. */
 const normalizePage = (specOrPage) => {
-  if (specOrPage.loader) {
-    // Already a spec, just return it.
-    return specOrPage
-  } else {
-    // Wrap the Page in a fresh spec, and put it in a promise to emulate
-    // an async module import.
-    return {
-      name: specOrPage.name,
-      loader: async () => ({ default: specOrPage }),
-    }
-  }
-}
+	if (specOrPage.loader) {
+		// Already a spec, just return it.
+		return specOrPage;
+	} else {
+		// Wrap the Page in a fresh spec, and put it in a promise to emulate
+		// an async module import.
+		return {
+			name: specOrPage.name,
+			loader: async () => ({ default: specOrPage }),
+		};
+	}
+};
 
-const DEFAULT_PAGE_LOADING_DELAY = 1000 // milliseconds
+const DEFAULT_PAGE_LOADING_DELAY = 1000; // milliseconds
 
 const RouterImpl = ({
-  pathname,
-  search,
-  paramTypes,
-  pageLoadingDelay = DEFAULT_PAGE_LOADING_DELAY,
-  children,
+	pathname,
+	search,
+	paramTypes,
+	pageLoadingDelay = DEFAULT_PAGE_LOADING_DELAY,
+	children,
 }) => {
-  const routes = React.Children.toArray(children)
-  mapNamedRoutes(routes)
+	const routes = React.Children.toArray(children);
+	mapNamedRoutes(routes);
 
-  let NotFoundPage
+	let NotFoundPage;
 
-  for (let route of routes) {
-    const { path, page: Page, redirect, notfound } = route.props
+	for (let route of routes) {
+		const { path, page: Page, redirect, notfound } = route.props;
 
-    if (notfound) {
-      NotFoundPage = Page
-      continue
-    }
+		if (notfound) {
+			NotFoundPage = Page;
+			continue;
+		}
 
-    const { match, params: pathParams } = matchPath(path, pathname, paramTypes)
+		const { match, params: pathParams } = matchPath(
+			path,
+			pathname,
+			paramTypes
+		);
 
-    if (match) {
-      const searchParams = parseSearch(search)
-      const allParams = { ...pathParams, ...searchParams }
-      if (redirect) {
-        const newPath = replaceParams(redirect, pathParams)
-        navigate(newPath)
-        return (
-          <RouterImpl pathname={newPath} search={search}>
-            {children}
-          </RouterImpl>
-        )
-      } else {
-        return (
-          <ParamsContext.Provider value={allParams}>
-            <PageLoader
-              spec={normalizePage(Page)}
-              delay={pageLoadingDelay}
-              params={allParams}
-            />
-          </ParamsContext.Provider>
-        )
-      }
-    }
-  }
+		if (match) {
+			const searchParams = parseSearch(search);
+			const allParams = { ...pathParams, ...searchParams };
+			if (redirect) {
+				const newPath = replaceParams(redirect, pathParams);
+				navigate(newPath);
+				return (
+					<RouterImpl pathname={newPath} search={search}>
+						{children}
+					</RouterImpl>
+				);
+			} else {
+				return (
+					<ParamsContext.Provider value={allParams}>
+						<PageLoader
+							spec={normalizePage(Page)}
+							delay={pageLoadingDelay}
+							params={allParams}
+						/>
+					</ParamsContext.Provider>
+				);
+			}
+		}
+	}
 
-  // If the router is being used in a Redwood app and only the notfound page is
-  // specified, show the Redwood splash page.
-  if (routes.length === 1 && NotFoundPage) {
-    const isRedwood = typeof __REDWOOD__ !== 'undefined'
-    return <SplashPage isRedwood={isRedwood} />
-  }
+	// If the router is being used in a Grenadier app and only the notfound page is
+	// specified, show the Grenadier splash page.
+	if (routes.length === 1 && NotFoundPage) {
+		const isGrenadier = typeof __GRENADIER__ !== "undefined";
+		return <SplashPage isGrenadier={isGrenadier} />;
+	}
 
-  return (
-    <ParamsContext.Provider value={{}}>
-      <PageLoader spec={normalizePage(NotFoundPage)} />
-    </ParamsContext.Provider>
-  )
-}
+	return (
+		<ParamsContext.Provider value={{}}>
+			<PageLoader spec={normalizePage(NotFoundPage)} />
+		</ParamsContext.Provider>
+	);
+};
 
-export { Router, Route }
+export { Router, Route };

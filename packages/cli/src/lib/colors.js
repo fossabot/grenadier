@@ -1,8 +1,8 @@
-import chalk from 'chalk'
+import chalk from "chalk";
 
 export default {
-  error: chalk.bold.red,
-  warning: chalk.keyword('orange'),
-  green: chalk.green,
-  info: chalk.grey,
-}
+	error: chalk.bold.red,
+	warning: chalk.keyword("orange"),
+	green: chalk.green,
+	info: chalk.grey,
+};

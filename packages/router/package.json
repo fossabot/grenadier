@@ -1,25 +1,26 @@
 {
-  "name": "@redwoodjs/router",
-  "version": "0.5.0-rc.2",
-  "files": [
-    "dist"
-  ],
-  "main": "dist/index.js",
-  "license": "MIT",
-  "dependencies": {
-    "core-js": "3.6.4"
-  },
-  "peerDependencies": {
-    "react": "*"
-  },
-  "scripts": {
-    "build": "yarn cross-env NODE_ENV=production babel src -d dist --delete-dir-on-start",
-    "build:watch": "nodemon --ignore dist --exec 'yarn build'",
-    "test": "yarn jest src",
-    "test:watch": "yarn test --watch"
-  },
-  "gitHead": "2801c132f40263f9fcfbdac8b1750d2e423eb649",
-  "devDependencies": {
-    "react": "^16.13.1"
-  }
+	"name": "@grenadierjs/router",
+	"version": "0.0.1",
+	"files": [
+		"dist"
+	],
+	"main": "dist/index.js",
+	"author": "Nikola Hristov",
+	"license": "SEE LICENSE IN LICENSE",
+	"dependencies": {
+		"core-js": "3.6.4"
+	},
+	"peerDependencies": {
+		"react": "*"
+	},
+	"scripts": {
+		"build": "cross-env NODE_ENV=production babel src -d dist --delete-dir-on-start",
+		"build:watch": "nodemon --ignore dist --exec 'npm run build'",
+		"test": "jest src",
+		"test:watch": "test --watch"
+	},
+	"gitHead": "f8a2239d9f42879ddf1228556e0a928dc6ab27e9",
+	"devDependencies": {
+		"react": "^16.13.1"
+	}
 }

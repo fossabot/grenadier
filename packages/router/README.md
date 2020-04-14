@@ -1,14 +1,14 @@
-# Redwood Router
+# Grenadier Router
 
-This is the built-in router for Redwood apps. It takes inspiration from Ruby on Rails, React Router, and Reach Router, but is very opinionated in its own way.
+This is the built-in router for Grenadier apps. It takes inspiration from Ruby on Rails, React Router, and Reach Router, but is very opinionated in its own way.
 
 > WARNING: This software is in alpha and should not be considered suitable for production use. In the "make it work; make it right; make it fast" paradigm, RR is in the later stages of the "make it work" phase.
 
-Redwood Router (RR from now on) is designed to list all routes in a single file, without any nesting. We prefer this design, as it makes it very easy to track which routes map to which pages.
+Grenadier Router (RR from now on) is designed to list all routes in a single file, without any nesting. We prefer this design, as it makes it very easy to track which routes map to which pages.
 
 ## Installation
 
-RR was designed for use in Redwood apps, and if you use `yarn create-redwood-app` it will be installed for you. The rest of the documentation here will use examples that are appropriate in that context. That said, you can use RR outside of Redwood apps too! To learn more, see [Installation and use outside of a Redwood app](#installation-and-use-outside-of-a-redwood-app) at the end of this document.
+GR was designed for use in Grenadier apps, and if you use `npx create-grenadier-app` it will be installed for you. The rest of the documentation here will use examples that are appropriate in that context. That said, you can use RR outside of Grenadier apps too! To learn more, see [Installation and use outside of a Grenadier app](#installation-and-use-outside-of-a-grenadier-app) at the end of this document.
 
 ## Router and Route
 
@@ -18,15 +18,15 @@ Each route is specified with a `Route`. Our first route will tell RR what to ren
 
 ```js
 // Routes.js
-import { Router, Route } from '@redwoodjs/router'
+import { Router, Route } from "@grenadierjs/router";
 
 const Routes = () => (
-  <Router>
-    <Route notfound page={NotFoundPage} />
-  </Router>
-)
+	<Router>
+		<Route notfound page={NotFoundPage} />
+	</Router>
+);
 
-export default Routes
+export default Routes;
 ```
 
 RR expects a single `Route` with a `notfound` prop. When no other route is found to match, the component in the `page` prop will be rendered.
@@ -46,10 +46,10 @@ When it comes to routing, matching URLs to Pages is only half the equation. The 
 
 ```js
 // SomePage.js
-import { Link, routes } from '@redwoodjs/router'
+import { Link, routes } from "@grenadierjs/router";
 
 // Given the route in the last section, this produces: <a href="/">
-const SomePage = () => <Link to={routes.home()} />
+const SomePage = () => <Link to={routes.home()} />;
 ```
 
 You use a `Link` to generate a link to one of your routes and can access URL generators for any of your routes from the `routes` object. We call the functions on the `routes` object _named route functions_ and they are named after whatever you specify in the `name` prop of the `Route`.
@@ -113,7 +113,7 @@ Now, if a request for `/user/mojombo` comes in, it will fail to match the first 
 
 We call built-in parameter types _core parameter types_. All core parameter types begin with a capital letter. Here are the types:
 
-- `Int` - Matches and converts an integer.
+-   `Int` - Matches and converts an integer.
 
 ## User route parameter types
 
@@ -135,7 +135,7 @@ const userRouteParamTypes = {
 
 Here we've created a custom `slug` route parameter type. It is defined by a `constraint` and a `transform`. Both are optional; the default constraint is `/[^/]+/` and the default transform is `(param) => param`.
 
-In the route we've specified a route parameter of `{name:slug}` which will invoke our custom route parameter type and if we have a requst for `/post/redwood-router`, the resulting `name` prop delivered to `PostPage` will be `['redwood', 'router']`.
+In the route we've specified a route parameter of `{name:slug}` which will invoke our custom route parameter type and if we have a requst for `/post/grenadier-router`, the resulting `name` prop delivered to `PostPage` will be `['grenadier', 'router']`.
 
 ## useParams
 
@@ -143,7 +143,7 @@ Sometimes it's convenient to receive route parameters as the props to the Page, 
 
 ```js
 // SomeDeeplyNestedComponent.js
-import { useParams } from '@redwoodjs/router'
+import { useParams } from '@grenadierjs/router'
 
 const SomeDeeplyNestedComponent = () => {
   const { id } = useParams()
@@ -159,7 +159,7 @@ If you'd like to programmatically navigate to a different page, you can simply u
 
 ```js
 // SomePage.js
-import { navigate, routes } from '@redwoodjs/router'
+import { navigate, routes } from '@grenadierjs/router'
 
 const SomePage = () => {
   const onSomeAction = () => {
@@ -171,7 +171,7 @@ const SomePage = () => {
 
 ## Code-splitting
 
-By default, RR (when used in a Redwood app) will code-split on every Page, creating a separate lazy-loaded webpack bundle for each. When navigating from page to page, RR will wait until the new Page module is loaded before re-rendering, thus preventing the "white-flash" effect.
+By default, RR (when used in a Grenadier app) will code-split on every Page, creating a separate lazy-loaded webpack bundle for each. When navigating from page to page, RR will wait until the new Page module is loaded before re-rendering, thus preventing the "white-flash" effect.
 
 ## Not code splitting
 
@@ -180,10 +180,10 @@ If you'd like to override the default lazy-loading behavior and include certain 
 ```js
 // Routes.js
 
-import HomePage from 'src/pages/HomePage'
+import HomePage from "src/pages/HomePage";
 ```
 
-Redwood will detect your explicit import and refrain from splitting that page into a separate bundle. Be careful with this feature, as you can easily bloat the size of your main bundle to the point where your initial page load time becomes unacceptable.
+Grenadier will detect your explicit import and refrain from splitting that page into a separate bundle. Be careful with this feature, as you can easily bloat the size of your main bundle to the point where your initial page load time becomes unacceptable.
 
 ## PageLoadingContext
 
@@ -192,17 +192,17 @@ Because lazily-loaded pages can take a non-negligible amount of time to load (de
 ```js
 // SomeLayout.js
 
-import { usePageLoadingContext } from '@redwoodjs/router'
+import { usePageLoadingContext } from "@grenadierjs/router";
 
 const SomeLayout = (props) => {
-  const { loading } = usePageLoadingContext()
-  return (
-    <div>
-      {loading && <div>Loading...</div>}
-      <main>{props.children}</main>
-    </div>
-  )
-}
+	const { loading } = usePageLoadingContext();
+	return (
+		<div>
+			{loading && <div>Loading...</div>}
+			<main>{props.children}</main>
+		</div>
+	);
+};
 ```
 
 When the lazy-loaded page is loading, `PageLoadingContext.Consumer` will pass `{ loading: true }` to the render function, or false otherwise. You can use this context wherever you like in your application!
@@ -217,15 +217,15 @@ After adding this to your app you will probably not see it when navigating betwe
 
 Now the loader will show up after 500ms of load time. To see your loading indicator, you can set this value to 0 or, even better, [change the network speed](https://developers.google.com/web/tools/chrome-devtools/network#throttle) in developer tools to "Slow 3G" or another agonizingly slow connection speed.
 
-## Installation and use outside of a Redwood app
+## Installation and use outside of a Grenadier app
 
-If you'd like to use RR in a non-Redwood app, you can! Start by installing it:
+If you'd like to use RR in a non-Grenadier app, you can! Start by installing it:
 
 ```terminal
-$ yarn add @redwoodjs/router
+$ npm install @grenadierjs/router
 ```
 
-Then you can import and use the various RR components like normal. The only exception being that Redwood automatically takes care of making all your Pages available in the `Routes.js` file. When using RR outside that context, you'll need to do this on your own. By default, RR provides code splitting for every Page. To mimic this, you'll need to define each Page as an object, like so:
+Then you can import and use the various RR components like normal. The only exception being that Grenadier automatically takes care of making all your Pages available in the `Routes.js` file. When using RR outside that context, you'll need to do this on your own. By default, RR provides code splitting for every Page. To mimic this, you'll need to define each Page as an object, like so:
 
 ```js
 const HomePage = {
@@ -252,4 +252,4 @@ import HomePage from 'path/to/HomePage.js'
 </Router>
 ```
 
-That's it! Everything else should work the same as it does inside a Redwood app!
+That's it! Everything else should work the same as it does inside a Grenadier app!

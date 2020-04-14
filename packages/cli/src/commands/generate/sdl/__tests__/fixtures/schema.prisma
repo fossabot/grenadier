@@ -8,7 +8,7 @@ generator client {
   binaryTargets = ["native", "rhel-openssl-1.0.x"]
 }
 
-// Define your own models here and run yarn db:save to create
+// Define your own models here and run npx gr db:save to create
 // migrations for them.
 
 model Post {

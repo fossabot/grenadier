@@ -1,5 +1,5 @@
-import { db } from 'src/lib/db'
+import { db } from "src/lib/db";
 
 export const users = () => {
-  return db.user.findMany()
-}
+	return db.user.findMany();
+};

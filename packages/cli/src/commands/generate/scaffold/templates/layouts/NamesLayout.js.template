@@ -1,8 +1,8 @@
-import { Link, routes } from '@redwoodjs/router'
+import { Link, routes } from '@grenadierjs/router'
 
 const ${pluralPascalName}Layout = (props) => {
   return (
-    <div className="rw-scaffold">
+    <div className="gr-scaffold">
       <div className="bg-white font-sans">
         <header className="flex justify-between py-4 px-8">
           <h1 className="text-xl font-semibold">

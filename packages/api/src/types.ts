@@ -1,8 +1,8 @@
-export type Services = { [funcName: string]: any }
+export type Services = { [funcName: string]: any };
 export type ImportedServices = {
-  [serviceName: string]: Services
-}
+	[serviceName: string]: Services;
+};
 export interface MakeServicesInterface {
-  services: ImportedServices
+	services: ImportedServices;
 }
-export type MakeServices = (args: MakeServicesInterface) => Services
+export type MakeServices = (args: MakeServicesInterface) => Services;

@@ -1,5 +1,5 @@
 const SinglePageLayout = ({ children }) => {
-  return <>{children}</>
-}
+	return <>{children}</>;
+};
 
-export default SinglePageLayout
+export default SinglePageLayout;

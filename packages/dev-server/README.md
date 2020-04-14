@@ -1,7 +1,7 @@
 # The Development Server
 
 The dev server looks for "lambda functions" in the directory
-(default: `./api/src/functions`) specified by your `redwood.toml`
+(default: `./api/src/functions`) specified by your `grenadier.toml`
 configuration file.
 
 Each lambda function is mapped to a URI based on their filename, as
@@ -16,6 +16,6 @@ supplied callback function to return a response:
 
 ```js
 export const handler = (event, context, callback) => {
-  return callback(null, { status: 200, body: 'Hello, world' })
-}
+	return callback(null, { status: 200, body: "Hello, world" });
+};
 ```

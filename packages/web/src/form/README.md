@@ -1,18 +1,18 @@
-# Redwood Form
+# Grenadier Form
 
-Redwood provides several helpers to make your life easier when working with forms. It is a simple wrapper around [react-hook-form](https://react-hook-form.com/) that makes it even easier to use in many cases. If Redwood's form helpers aren't flexible enough for you, you can always use `react-hook-form` directly, or use any other [form builder](https://github.com/jaredpalmer/formik) that works with React.
+Grenadier provides several helpers to make your life easier when working with forms. It is a simple wrapper around [react-hook-form](https://react-hook-form.com/) that makes it even easier to use in many cases. If Grenadier's form helpers aren't flexible enough for you, you can always use `react-hook-form` directly, or use any other [form builder](https://github.com/jaredpalmer/formik) that works with React.
 
 > WARNING: This software is in alpha and should not be considered suitable for production use. In the "make it work; make it right; make it fast" paradigm, RF is in the later stages of the "make it work" phase.
 
-Redwood currently provides the following form components:
+Grenadier currently provides the following form components:
 
-* `<Form>` surrounds all form elements and provides contexts for errors and form submission
-* `<FormError>` displays an error message, typically at the top of your form, containing error messages from the server
-* `<Label>` is used in place of the HTML `<label>` tag and can respond to errors with different styling
-* `<TextField>` is used in place of the HTML `<input type="text">` tag and can accept validation options and be styled differently in the presence of an error
-* `<TextAreaField>` is used in place of the HTML `<textarea>` tag and can accept validation options and be styled differently in the presence of an error
-* `<FieldError>` will display error messages from form validation and server errors
-* `<Submit>` is used in place of `<button type="submit">` and will trigger a validation check and "submission" of the form (actually executes the function given to the `onSubmit` attribute on `<Form>`)
+-   `<Form>` surrounds all form elements and provides contexts for errors and form submission
+-   `<FormError>` displays an error message, typically at the top of your form, containing error messages from the server
+-   `<Label>` is used in place of the HTML `<label>` tag and can respond to errors with different styling
+-   `<TextField>` is used in place of the HTML `<input type="text">` tag and can accept validation options and be styled differently in the presence of an error
+-   `<TextAreaField>` is used in place of the HTML `<textarea>` tag and can accept validation options and be styled differently in the presence of an error
+-   `<FieldError>` will display error messages from form validation and server errors
+-   `<Submit>` is used in place of `<button type="submit">` and will trigger a validation check and "submission" of the form (actually executes the function given to the `onSubmit` attribute on `<Form>`)
 
 Some fields share options:
 
@@ -26,65 +26,73 @@ A typical React component using these helpers would look something like this Con
 
 ```javascript
 import {
-  Form,
-  Label,
-  TextField,
-  TextAreaField,
-  FieldError,
-  Submit,
-} from '@redwoodjs/web'
+	Form,
+	Label,
+	TextField,
+	TextAreaField,
+	FieldError,
+	Submit,
+} from "@grenadierjs/web";
 
 const ContactPage = () => {
-  const onSubmit = (data) => {
-    console.log(data)
-  }
+	const onSubmit = (data) => {
+		console.log(data);
+	};
 
-  return (
-    <Form onSubmit={onSubmit}>
-      <Label name="name" className="label" errorClassName="label error" />
-      <TextField
-        name="name"
-        className="input"
-        errorClassName="input error"
-        validation={{ required: true }}
-      />
-      <FieldError name="name" className="error-message" />
+	return (
+		<Form onSubmit={onSubmit}>
+			<Label name="name" className="label" errorClassName="label error" />
+			<TextField
+				name="name"
+				className="input"
+				errorClassName="input error"
+				validation={{ required: true }}
+			/>
+			<FieldError name="name" className="error-message" />
 
-      <Label name="email" className="label" errorClassName="label error" />
-      <TextField
-        name="email"
-        className="input"
-        errorClassName="input error"
-        validation={{
-          required: true,
-          pattern: {
-            value: /[^@]+@[^\.]+\..+/,
-          },
-        }}
-      />
-      <FieldError name="email" className="error-message" />
+			<Label
+				name="email"
+				className="label"
+				errorClassName="label error"
+			/>
+			<TextField
+				name="email"
+				className="input"
+				errorClassName="input error"
+				validation={{
+					required: true,
+					pattern: {
+						value: /[^@]+@[^\.]+\..+/,
+					},
+				}}
+			/>
+			<FieldError name="email" className="error-message" />
 
-      <Label name="message" className="label" errorClassName="label error" />
-      <TextAreaField
-        name="message"
-        className="input"
-        errorClassName="input error"
-        validation={{ required: true }}
-      />
-      <FieldError name="message" className="error-message" />
+			<Label
+				name="message"
+				className="label"
+				errorClassName="label error"
+			/>
+			<TextAreaField
+				name="message"
+				className="input"
+				errorClassName="input error"
+				validation={{ required: true }}
+			/>
+			<FieldError name="message" className="error-message" />
 
-      <Submit className="button">Save</Submit>
-    </Form>
-  )
-}
+			<Submit className="button">Save</Submit>
+		</Form>
+	);
+};
 ```
 
 ## `<Form>`
 
-Any form you want Redwood to provide validation and error styling on should be surrounded by this tag. Except for the view attributes specific to validation and submission, props are passed down to the regular `<form>` tag that is rendered.
+Any form you want Grenadier to provide validation and error styling on should be surrounded by this tag. Except for the view attributes specific to validation and submission, props are passed down to the regular `<form>` tag that is rendered.
 
 ```html
-<Form onSubmit={onSubmit} className="form">...</Form>
+<form onSubmit="{onSubmit}" className="form">...</form>
 
 <!-- Renders: <form class="form">...</form> -->
 ```
@@ -95,13 +103,13 @@ Besides the attributes listed below, any additional attributes are passed on as 
 
 #### onSubmit
 
-The `onSubmit` prop accepts a function name or anonymous function to be called *if* validation is successful. This function will be called with a single object containing name/value pairs of all *Redwood form helper* fields in your form. Meaning if you mix `<input>` and `<TextField>` form fields, only `<TextField>` names/values will be present.
+The `onSubmit` prop accepts a function name or anonymous function to be called _if_ validation is successful. This function will be called with a single object containing name/value pairs of all _Grenadier form helper_ fields in your form. Meaning if you mix `<input>` and `<TextField>` form fields, only `<TextField>` names/values will be present.
 
 Behind the scenes the handler given to `onSubmit` is given to [react-hook-form](https://react-hook-form.com/api#handleSubmit)'s `handleSubmit` function.
 
 #### validation
 
-The `validation` prop accepts an object containing options for react-hook-form, which Redwood's `<Form>` is a simple wrapper around. See the [useForm](https://react-hook-form.com/api#useForm) for the full list of options.
+The `validation` prop accepts an object containing options for react-hook-form, which Grenadier's `<Form>` is a simple wrapper around. See the [useForm](https://react-hook-form.com/api#useForm) for the full list of options.
 
 The object given to `validation` is forwarded to `useForm` behind the scenes when creating the form. For example, to validate your form fields when the user leaves a field instead of waiting for them to click the submit button:
 
@@ -114,22 +122,22 @@ The object given to `validation` is forwarded to `useForm` behind the scenes whe
 If you need access to the functions that `useForm` gives you then you can manually call it in your component, but you'll need to provide those functions to `<Form>` so that it can use those instead of calling `useForm` itself and generating its own instance of them.
 
 ```javascript
-import { useForm } from 'react-hook-form'
+import { useForm } from "react-hook-form";
 
 const ContactPage = () => {
-  const formMethods = useForm()
+	const formMethods = useForm();
 
-  const onSubmit = (data) => {
-    console.info(data)
-    formMethods.reset()
-  }
+	const onSubmit = (data) => {
+		console.info(data);
+		formMethods.reset();
+	};
 
-  return (
-    <Form formMethods={formMethods} onSubmit={onSubmit}>
-      // ...
-    </Form>
-  )
-}
+	return (
+		<Form formMethods={formMethods} onSubmit={onSubmit}>
+			// ...
+		</Form>
+	);
+};
 ```
 
 ## `<FormError>`
@@ -140,14 +148,14 @@ If an error is present the following HTML is rendered (`className` and `style` a
 
 ```html
 <div>
-  <p>
-    Can't create new contact:
-  </p>
-  <ul>
-    <li>
-      email is not formatted like an email address
-    </li>
-  </ul>
+	<p>
+		Can't create new contact:
+	</p>
+	<ul>
+		<li>
+			email is not formatted like an email address
+		</li>
+	</ul>
 </div>
 ```
 
@@ -157,34 +165,34 @@ In this case if you provided validation for `email` in the `<TextField>` compone
 
 #### error
 
-An object containing server errors. Redwood expects this object to be from GraphQL listing errors in validation before submission to the server, or errors from the server when trying to mutate the data store in response to the GraphQL mutation sent across the wire.
+An object containing server errors. Grenadier expects this object to be from GraphQL listing errors in validation before submission to the server, or errors from the server when trying to mutate the data store in response to the GraphQL mutation sent across the wire.
 
-The easiest way to get your errors in this format is give `<FormError>` the `error` property created by the `useMutation` hook provided by `@redwoodjs/web` (the body of the form has been left out to keep this code short-ish):
+The easiest way to get your errors in this format is give `<FormError>` the `error` property created by the `useMutation` hook provided by `@grenadierjs/web` (the body of the form has been left out to keep this code short-ish):
 
 ```javascript
 const CREATE_CONTACT = gql`
-  mutation CreateContactMutation($input: ContactInput!) {
-    createContact(input: $input) {
-      id
-    }
-  }
-`
-import { useMutation } from '@redwoodjs/web'
+	mutation CreateContactMutation($input: ContactInput!) {
+		createContact(input: $input) {
+			id
+		}
+	}
+`;
+import { useMutation } from "@grenadierjs/web";
 
 const ContactPage = (props) => {
-  const [create, { loading, error }] = useMutation(CREATE_CONTACT)
+	const [create, { loading, error }] = useMutation(CREATE_CONTACT);
 
-  onSubmit = (data) => {
-    create({ variables: { input: data }})
-  }
+	onSubmit = (data) => {
+		create({ variables: { input: data } });
+	};
 
-  return (
-    <Form onSubmit={onSubmit}>
-      <FormError error={error} />
-      // ...
-    </Form>
-  )
-}
+	return (
+		<Form onSubmit={onSubmit}>
+			<FormError error={error} />
+			// ...
+		</Form>
+	);
+};
 ```
 
 If `error` contains the object that `<FormError>` is expecting then the errors will be shown (in this case at the top of the form) otherwise nothing is rendered.
@@ -212,7 +220,7 @@ Generates an HTML `<label>` tag but is given different `style` and `className` a
 This tag can be self closing, in which case the `name` becomes the text of the label:
 
 ```html
-<Label name="name" className="input" errorClassName="input error" />
+<label name="name" className="input" errorClassName="input error" />
 
 <!-- Renders: <label for="name" class="input">name</label> -->
 ```
@@ -220,7 +228,9 @@ This tag can be self closing, in which case the `name` becomes the text of the l
 It can also have standard separate open/close tags and take text inside, in which that text will be the text of the rendered `<label>`:
 
 ```html
-<Label name="name" className="input" errorClassName="input error">Your Name</Label>
+<label name="name" className="input" errorClassName="input error"
+	>Your Name</label
+>
 
 <!-- Renders: <label for="name" class="input">Your Name</label> -->
 ```
@@ -235,7 +245,7 @@ The name of the field that this label is connected to. This should be the same a
 
 #### errorStyle / errorClassName
 
-The `style` and `className` that should be passed to the HTML `<label>` tag that is generated *if* the field with the same `name` has a validation error.
+The `style` and `className` that should be passed to the HTML `<label>` tag that is generated _if_ the field with the same `name` has a validation error.
 
 ## `<TextField>`
 
@@ -263,21 +273,21 @@ The `name` of this field which will be used as the key in the object sent to the
 
 #### errorStyle / errorClassName
 
-The `style` and `className` that should be passed to the HTML `<input>` tag that is generated *if* this field has a validation error.
+The `style` and `className` that should be passed to the HTML `<input>` tag that is generated _if_ this field has a validation error.
 
 #### validation
 
-Options that define how this field should be validated. The options are passed to the underlying `register` function provided by `react-hook-form`. The full list of possible values can be found in the [react-hook-form docs](https://react-hook-form.com/api#register) (ignore the usage of `ref` as that is called automaticaly for you by Redwood).
+Options that define how this field should be validated. The options are passed to the underlying `register` function provided by `react-hook-form`. The full list of possible values can be found in the [react-hook-form docs](https://react-hook-form.com/api#register) (ignore the usage of `ref` as that is called automaticaly for you by Grenadier).
 
 ```javascript
 <TextField
-  name="email"
-  validation={{
-    required: true,
-    pattern: {
-      value: /[^@]+@[^\.]+\..+/,
-    },
-  }}
+	name="email"
+	validation={{
+		required: true,
+		pattern: {
+			value: /[^@]+@[^\.]+\..+/,
+		},
+	}}
 />
 ```
 
@@ -301,12 +311,12 @@ See `<TextField>` [errorStyle](#textfield-attributes)
 
 ## `<FieldError>`
 
-Renders a `<span>` containing any validation error message *if* the field with the same `name` attribute has a validation error. Otherwise renders nothing.
+Renders a `<span>` containing any validation error message _if_ the field with the same `name` attribute has a validation error. Otherwise renders nothing.
 
 ```html
 <FieldError name="name" className="error-message">
-
-<!-- Renders: <span class="error-message">name is required</span> -->
+	<!-- Renders: <span class="error-message">name is required</span> --></FieldError
+>
 ```
 
 ### `<FieldError>` Attributes

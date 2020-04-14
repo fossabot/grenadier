@@ -1,5 +1,5 @@
-import { useMutation } from '@redwoodjs/web'
-import { Link, routes, navigate } from '@redwoodjs/router'
+import { useMutation } from '@grenadierjs/web'
+import { Link, routes, navigate } from '@grenadierjs/router'
 
 const DELETE_POST_MUTATION = gql`
   mutation Delete${singularPascalName}Mutation($id: ${idType}!) {

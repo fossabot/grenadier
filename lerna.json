@@ -1,10 +1,10 @@
 {
-  "version": "0.5.0-rc.2",
-  "npmClient": "yarn",
-  "useWorkspaces": true,
-  "command": {
-    "publish": {
-      "verifyAccess": false
-    }
-  }
+	"version": "0.0.1",
+	"npmClient": "npm",
+	"useWorkspaces": true,
+	"command": {
+		"publish": {
+			"verifyAccess": false
+		}
+	}
 }
