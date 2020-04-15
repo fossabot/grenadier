@@ -119,9 +119,9 @@ const SplashPage = ({ isGrenadier }) => (
 			)}
 			<div>
 				<p>
-					Thanks for choosing Grenadier Router! You&apos;re seeing this
-					page because you don&apos;t have any custom routes yet. You
-					can add a homepage route like so:
+					Thanks for choosing Grenadier Router! You&apos;re seeing
+					this page because you don&apos;t have any custom routes yet.
+					You can add a homepage route like so:
 				</p>
 				<div className="code">
 					<code>

@@ -64,7 +64,11 @@ module.exports = (webpackEnv) => {
 					"node_modules",
 					"styled-components"
 				),
-				react: path.resolve(grenadierPaths.base, "node_modules", "react"),
+				react: path.resolve(
+					grenadierPaths.base,
+					"node_modules",
+					"react"
+				),
 			},
 		},
 		plugins: [
@@ -76,7 +80,10 @@ module.exports = (webpackEnv) => {
 			!isEnvProduction && new webpack.HotModuleReplacementPlugin(),
 			new HtmlWebpackPlugin({
 				title: path.basename(grenadierPaths.base),
-				template: path.resolve(grenadierPaths.base, "web/src/index.html"),
+				template: path.resolve(
+					grenadierPaths.base,
+					"web/src/index.html"
+				),
 				inject: true,
 				chunks: "all",
 			}),
@@ -171,7 +178,10 @@ module.exports = (webpackEnv) => {
 				},
 				{
 					test: /.+Cell.js$/,
-					include: path.join(grenadierPaths.base, "web/src/components"),
+					include: path.join(
+						grenadierPaths.base,
+						"web/src/components"
+					),
 					use: {
 						loader: path.resolve(
 							__dirname,
