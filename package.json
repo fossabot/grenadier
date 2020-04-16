@@ -1,8 +1,24 @@
 {
-	"author": "Nikola Hristov",
 	"license": "SEE LICENSE IN LICENSE",
+	"author": "Nikola Hristov",
 	"workspaces": [
 		"packages/*"
+	],
+	"scripts": {
+		"build": "cross-env NODE_ENV=production lerna run build",
+		"lint": "npx eslint packages",
+		"lint:fix": "npx eslint --fix packages",
+		"test": "lerna run test --stream -- --colors"
+	},
+	"eslintConfig": {
+		"extends": "@grenadierjs/eslint-config",
+		"ignorePatterns": [
+			"fixtures"
+		]
+	},
+	"eslintIgnore": [
+		"dist",
+		"packages/api/importAll.macro.js"
 	],
 	"devDependencies": {
 		"@babel/cli": "^7.8.4",
@@ -21,21 +37,5 @@
 		"lerna": "^3.20.2",
 		"nodemon": "^2.0.3",
 		"typescript": "^3.8.3"
-	},
-	"eslintConfig": {
-		"extends": "@grenadierjs/eslint-config",
-		"ignorePatterns": [
-			"fixtures"
-		]
-	},
-	"eslintIgnore": [
-		"dist",
-		"packages/api/importAll.macro.js"
-	],
-	"scripts": {
-		"build": "cross-env NODE_ENV=production lerna run build",
-		"test": "lerna run test --stream -- --colors",
-		"lint": "npx eslint packages",
-		"lint:fix": "npx eslint --fix packages"
 	}
 }

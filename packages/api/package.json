@@ -1,14 +1,28 @@
 {
 	"name": "@grenadierjs/api",
 	"version": "0.0.1",
+	"license": "SEE LICENSE IN LICENSE",
+	"author": "Nikola Hristov",
+	"main": "./dist/main.js",
+	"types": "./dist/main.d.ts",
 	"files": [
 		"dist",
 		"importAll.macro.js"
 	],
-	"main": "./dist/main.js",
-	"types": "./dist/main.d.ts",
-	"author": "Nikola Hristov",
-	"license": "SEE LICENSE IN LICENSE",
+	"scripts": {
+		"build": "npm run build:js && npm run build:types && move-cli dist/importAll.macro.js ./importAll.macro.js",
+		"build:js": "del-cli importAll.macro.js && cross-env NODE_ENV=production babel src -d dist --delete-dir-on-start --extensions \".js,.ts\" --source-maps inline",
+		"build:types": "tsc --declaration --emitDeclarationOnly",
+		"build:watch": "nodemon --watch src -e ts,js --ignore dist --exec 'npm run build'",
+		"test": "jest",
+		"test:watch": "test --watch"
+	},
+	"jest": {
+		"testPathIgnorePatterns": [
+			"/fixtures/",
+			"/dist/"
+		]
+	},
 	"dependencies": {
 		"@grenadierjs/internal": "^0.0.1",
 		"@prisma/client": "2.0.0-beta.2",
@@ -30,20 +44,6 @@
 		"babel-plugin-tester": "^9.0.0",
 		"del-cli": "^3.0.0",
 		"move-cli": "^1.2.1"
-	},
-	"jest": {
-		"testPathIgnorePatterns": [
-			"/fixtures/",
-			"/dist/"
-		]
-	},
-	"scripts": {
-		"build": "npm run build:js && npm run build:types && move-cli dist/importAll.macro.js ./importAll.macro.js",
-		"build:js": "del-cli importAll.macro.js && cross-env NODE_ENV=production babel src -d dist --delete-dir-on-start --extensions \".js,.ts\" --source-maps inline",
-		"build:types": "tsc --declaration --emitDeclarationOnly",
-		"build:watch": "nodemon --watch src -e ts,js --ignore dist --exec 'npm run build'",
-		"test": "jest",
-		"test:watch": "test --watch"
 	},
 	"gitHead": "f8a2239d9f42879ddf1228556e0a928dc6ab27e9"
 }

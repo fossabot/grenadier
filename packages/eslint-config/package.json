@@ -1,9 +1,9 @@
 {
 	"name": "@grenadierjs/eslint-config",
 	"version": "0.0.1",
-	"main": "index.js",
-	"author": "Nikola Hristov",
 	"license": "SEE LICENSE IN LICENSE",
+	"author": "Nikola Hristov",
+	"main": "index.js",
 	"dependencies": {
 		"@grenadierjs/eslint-plugin-grenadier": "^0.0.1",
 		"@typescript-eslint/eslint-plugin": "^2.25.0",

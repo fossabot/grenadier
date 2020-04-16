@@ -1,25 +1,13 @@
 {
 	"name": "@grenadierjs/internal",
 	"version": "0.0.1",
+	"license": "SEE LICENSE IN LICENSE",
+	"author": "Nikola Hristov",
 	"main": "dist/main.js",
+	"types": "./dist/main.d.ts",
 	"files": [
 		"dist"
 	],
-	"types": "./dist/main.d.ts",
-	"author": "Nikola Hristov",
-	"license": "SEE LICENSE IN LICENSE",
-	"dependencies": {
-		"findup-sync": "^4.0.0",
-		"toml": "^3.0.0"
-	},
-	"devDependencies": {
-		"@types/findup-sync": "^2.0.2"
-	},
-	"jest": {
-		"testPathIgnorePatterns": [
-			"/fixtures/"
-		]
-	},
 	"scripts": {
 		"build": "npm run build:js && npm run build:types",
 		"build:js": "cross-env NODE_ENV=production babel src -d dist --delete-dir-on-start --extensions \".js,.ts\" --source-maps inline",
@@ -27,6 +15,18 @@
 		"build:watch": "nodemon --ignore dist --exec 'npm run build'",
 		"test": "jest",
 		"test:watch": "test --watch"
+	},
+	"jest": {
+		"testPathIgnorePatterns": [
+			"/fixtures/"
+		]
+	},
+	"dependencies": {
+		"findup-sync": "^4.0.0",
+		"toml": "^3.0.0"
+	},
+	"devDependencies": {
+		"@types/findup-sync": "^2.0.2"
 	},
 	"gitHead": "f8a2239d9f42879ddf1228556e0a928dc6ab27e9"
 }
