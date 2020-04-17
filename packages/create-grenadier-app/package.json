@@ -15,9 +15,9 @@
 		"@babel/runtime-corejs3": "^7.9.2",
 		"@grenadierjs/internal": "^0.0.1",
 		"axios": "^0.19.2",
-		"chalk": "^3.0.0",
-		"check-node-version": "^4.0.2",
-		"decompress": "^4.2.0",
+		"chalk": "^4.0.0",
+		"check-node-version": "^4.0.3",
+		"decompress": "^4.2.1",
 		"execa": "^4.0.0",
 		"listr": "^0.14.3",
 		"tmp": "^0.1.0"

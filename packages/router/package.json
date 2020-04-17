@@ -14,7 +14,7 @@
 		"test:watch": "test --watch"
 	},
 	"dependencies": {
-		"core-js": "3.6.4"
+		"core-js": "3.6.5"
 	},
 	"devDependencies": {
 		"react": "^16.13.1"
