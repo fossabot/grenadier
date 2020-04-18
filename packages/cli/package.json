@@ -20,28 +20,28 @@
 		"test:watch": "test --watch"
 	},
 	"dependencies": {
-		"@grenadierjs/internal": "^0.0.1",
-		"@prisma/sdk": "^2.0.0-beta.2",
-		"camelcase": "^6.0.0",
-		"chalk": "^4.0.0",
-		"concurrently": "^5.1.0",
+		"@grenadierjs/internal": "0.0.1",
+		"@prisma/sdk": "2.0.0-beta.2",
+		"camelcase": "6.0.0",
+		"chalk": "4.0.0",
+		"concurrently": "5.1.0",
 		"core-js": "3.6.5",
-		"cross-env": "^7.0.2",
-		"dotenv-defaults": "^1.1.1",
-		"envinfo": "^7.5.0",
-		"execa": "^4.0.0",
-		"listr": "^0.14.3",
-		"listr-verbose-renderer": "^0.6.0",
-		"lodash": "^4.17.15",
-		"param-case": "^3.0.3",
-		"pascalcase": "^1.0.0",
-		"pluralize": "^8.0.0",
-		"prettier": "^2.0.4",
-		"rimraf": "^3.0.2",
-		"yargs": "^15.3.1"
+		"cross-env": "7.0.2",
+		"dotenv-defaults": "1.1.1",
+		"envinfo": "7.5.0",
+		"execa": "4.0.0",
+		"listr": "0.14.3",
+		"listr-verbose-renderer": "0.6.0",
+		"lodash": "4.17.15",
+		"param-case": "3.0.3",
+		"pascalcase": "1.0.0",
+		"pluralize": "8.0.0",
+		"prettier": "2.0.4",
+		"rimraf": "3.0.2",
+		"yargs": "15.3.1"
 	},
 	"devDependencies": {
-		"@types/node-fetch": "^2.5.6"
+		"@types/node-fetch": "2.5.6"
 	},
 	"gitHead": "f8a2239d9f42879ddf1228556e0a928dc6ab27e9"
 }

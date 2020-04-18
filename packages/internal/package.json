@@ -22,11 +22,11 @@
 		]
 	},
 	"dependencies": {
-		"findup-sync": "^4.0.0",
-		"toml": "^3.0.0"
+		"findup-sync": "4.0.0",
+		"toml": "3.0.0"
 	},
 	"devDependencies": {
-		"@types/findup-sync": "^2.0.2"
+		"@types/findup-sync": "2.0.2"
 	},
 	"gitHead": "f8a2239d9f42879ddf1228556e0a928dc6ab27e9"
 }
