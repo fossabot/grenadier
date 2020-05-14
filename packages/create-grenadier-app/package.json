@@ -12,15 +12,15 @@
 		"build:watch": "nodemon --ignore dist --exec 'npm run build'"
 	},
 	"dependencies": {
-		"@babel/runtime-corejs3": "7.9.2",
+		"@babel/runtime-corejs3": "7.9.6",
 		"@grenadierjs/internal": "0.0.1",
 		"axios": "0.19.2",
 		"chalk": "4.0.0",
 		"check-node-version": "4.0.3",
 		"decompress": "4.2.1",
-		"execa": "4.0.0",
+		"execa": "4.0.1",
 		"listr": "0.14.3",
-		"tmp": "0.1.0"
+		"tmp": "0.2.1"
 	},
 	"gitHead": "f8a2239d9f42879ddf1228556e0a928dc6ab27e9"
 }
