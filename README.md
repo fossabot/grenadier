@@ -25,6 +25,8 @@ like, take a look at the following projects:
 -   [Invoice](https://github.com/grenadierjs/example-invoice)
 
 ## Technologies
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FGrenadierJS%2Fgrenadier.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FGrenadierJS%2Fgrenadier?ref=badge_shield)
+
 
 We are obsessed with developer experience and eliminating as much boilerplate as
 possible. Where existing libraries elegantly solve our problems, we use them;
@@ -143,3 +145,7 @@ serverless dream here too.
 Grenadier is intentionally pushing the boundaries of what's possible with
 JAMstack. In fact, the whole reason I (Tom) started working on Grenadier is
 because of a tweet I posted some time ago:
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FGrenadierJS%2Fgrenadier.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FGrenadierJS%2Fgrenadier?ref=badge_large)
